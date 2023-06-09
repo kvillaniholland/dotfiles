@@ -2,64 +2,46 @@ local vim = vim
 local nvim_lsp = require("lspconfig")
 
 vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	severity_sort = true,
-	float = {
-		border = "rounded",
-		source = "always",
-		max_width = 240,
-		header = "",
-		prefix = "",
-	},
+    virtual_text = false,
+    signs = true,
+    severity_sort = true,
+    float = {
+        border = "rounded",
+        source = "always",
+        max_width = 240,
+        header = "",
+        prefix = "",
+    },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local on_attach = function(client, bufnr)
+    -- We want to use Null LS for formatting
+    client.server_capabilities.documentFormattingProvider = false
+end
 
 nvim_lsp.eslint.setup({
-	root_dir = nvim_lsp.util.find_node_modules_ancestor,
-	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = true
-	end,
+    root_dir = nvim_lsp.util.find_node_modules_ancestor,
+    capabilities = capabilities,
+    on_attach = on_attach,
 })
 
-nvim_lsp["jsonls"].setup({
-	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false -- Don't use TS server to format, since we will use null_ls
-	end,
+nvim_lsp.jsonls.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
 })
 
--- TODO: LSP completion will only work for typescript & lua right now
-require("typescript").setup({
-	server = { -- pass options to lspconfig's setup method
-		capabilities = capabilities,
-		init_options = {
-			preferences = {
-				importModuleSpecifierPreference = "relative",
-			},
-		},
-		on_attach = function(client, bufnr)
-			client.server_capabilities.documentFormattingProvider = false -- Don't use TS server to format, since we will use null_ls
-		end,
-	},
+nvim_lsp.tsserver.setup({
+    capabilities = capabilities,
+    init_options = {
+        preferences = {
+            importModuleSpecifierPreference = "relative",
+        },
+    },
+    on_attach = on_attach,
 })
--- nvim_lsp.tsserver.setup({
--- 	capabilities = capabilities,
--- 	init_options = {
--- 		preferences = {
--- 			importModuleSpecifierPreference = "relative",
--- 		},
--- 	},
--- 	on_attach = function(client, bufnr)
--- 		client.server_capabilities.documentFormattingProvider = false -- Don't use TS server to format, since we will use null_ls
--- 	end,
--- })
 
 nvim_lsp.lua_ls.setup({
-	capabilities = capabilities,
-	on_attach = function(client)
-		client.server_capabilities.documentFormattingProvider = false -- Don't use TS server to format, since we will use null_ls
-	end,
+    capabilities = capabilities,
+    on_attach = on_attach,
 })
