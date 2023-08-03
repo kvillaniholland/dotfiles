@@ -1,7 +1,7 @@
 local vim = vim
 local nvim_lsp = require("lspconfig")
 
-vim.diagnostic.config({
+ vim.diagnostic.config({
     virtual_text = false,
     signs = true,
     severity_sort = true,
