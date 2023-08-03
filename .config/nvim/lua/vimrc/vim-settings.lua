@@ -57,4 +57,4 @@ vim.o.autowriteall = true
 vim.o.autoread = true
 vim.o.confirm = true
 vim.o.undolevels = 10000
-vim.o.clipboard = "unnamedplus"
+-- vim.o.clipboard = "unnamedplus"

@@ -17,8 +17,6 @@ end
 autocommand("BufWritePre", { command = "lua if vim.lsp.buf.server_ready() then vim.lsp.buf.format() end" })
 -- Trim trailing whitespace on write
 autocommand("BufWritePre", { command = "lua MiniTrailspace.trim()" })
--- Run ESLint on write
-autocommand("BufWritePre", { command = ":EslintFixAll", pattern = "*.tsx,*.ts,*.jsx,*.js" })
 -- Trim trailing whitespace lines on write
 autocommand("BufWritePre", { command = "lua MiniTrailspace.trim_last_lines()" })
 -- Write all files when going away from Neovim
