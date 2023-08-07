@@ -77,9 +77,9 @@ packup({
 	{ name = "spectre", repo = "nvim-pack/nvim-spectre" },
 	-- Telescope plugin to show commands / cheatsheet
 	{ name = "command-center", repo = "FeiyouG/command_center.nvim" },
-	-- Easy textobject creation
+	-- Easy textobject creation (required by below)
 	{ name = "user-textobj", repo = "kana/vim-textobj-user" },
-	-- Textobj for working with camelcase, etc
+	-- Textobj for working with camelcase, etc (ex. civ to change camelcase segment)
 	{ name = "text-obj-variable-segment", repo = "Julian/vim-textobj-variable-segment" },
 	-- Completion engine
 	{ name = "nvim-cmp", repo = "hrsh7th/nvim-cmp" },

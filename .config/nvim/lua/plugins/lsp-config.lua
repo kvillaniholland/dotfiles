@@ -1,5 +1,6 @@
 local vim = vim
 
+-- Configure diagnostic floating windows
 vim.diagnostic.config({
 	virtual_text = false,
 	signs = true,
@@ -12,3 +13,11 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 })
+
+-- Configure info floating windows
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.border = "rounded"
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
