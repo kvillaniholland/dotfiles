@@ -134,25 +134,10 @@ _G.packer_plugins = {
     path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
   },
-  ["friendly-snippets"] = {
-    loaded = true,
-    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
-  },
   ["git-blame.nvim"] = {
     loaded = true,
     path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
     url = "https://github.com/f-person/git-blame.nvim"
-  },
-  ["git-conflict.nvim"] = {
-    loaded = true,
-    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
-    url = "https://github.com/akinsho/git-conflict.nvim"
-  },
-  ["hop.nvim"] = {
-    loaded = true,
-    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/hop.nvim",
-    url = "https://github.com/phaazon/hop.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -229,11 +214,6 @@ _G.packer_plugins = {
     path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/nvim-spider",
     url = "https://github.com/chrisgrieser/nvim-spider"
   },
-  ["nvim-treehopper"] = {
-    loaded = true,
-    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/nvim-treehopper",
-    url = "https://github.com/mfussenegger/nvim-treehopper"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -244,10 +224,10 @@ _G.packer_plugins = {
     path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
-  ["nvim-treesitter-textobjects"] = {
+  ["nvim-vtsls"] = {
     loaded = true,
-    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/nvim-vtsls",
+    url = "https://github.com/yioneko/nvim-vtsls"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -273,16 +253,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/promise-async",
     url = "https://github.com/kevinhwang91/promise-async"
-  },
-  ["relative-toggle.nvim"] = {
-    loaded = true,
-    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/relative-toggle.nvim",
-    url = "https://github.com/cpea2506/relative-toggle.nvim"
-  },
-  ["silicon.lua"] = {
-    loaded = true,
-    path = "/Users/villanih/.local/share/nvim/site/pack/packer/start/silicon.lua",
-    url = "https://github.com/narutoxy/silicon.lua"
   },
   ["smartyank.nvim"] = {
     loaded = true,

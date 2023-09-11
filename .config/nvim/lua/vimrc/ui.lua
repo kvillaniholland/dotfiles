@@ -1,4 +1,5 @@
 local vim = vim
+
 -- Set colorscheme
 vim.cmd([[colorscheme catppuccin]])
 vim.g.catppuccin_flavour = "macchiato"

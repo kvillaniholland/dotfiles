@@ -100,7 +100,7 @@ map("n", "<space>e", ":lua require('telescope.builtin').resume()<cr>", {}, {
 })
 
 map("n", "<space>r", ":lua vim.lsp.buf.rename()<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "Rename symbol",
 })
 
@@ -115,17 +115,17 @@ map("n", "<space>y", ":Telescope quickfix<cr>", {}, {
 })
 
 map("n", "<space>u", ":lua vim.lsp.buf.hover({focusable = false})<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "Show LSP info popover",
 })
 
 map("n", "<space>i", ":lua vim.diagnostic.open_float({focusable = false})<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "Show LSP diagnostic popover",
 })
 
 map("n", "<space>o", ":TroubleToggle document_diagnostics<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "Toggle document diagnostics window",
 })
 
@@ -168,12 +168,12 @@ map("n", "<c-g><c-[>", ":GitConflictPrevConflict<cr>", {}, {
 
 -- LSP Diagnostics
 map("n", "<c-d><c-]>", ":lua vim.diagnostic.goto_next()<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "Diagnostics: Next diagnostic",
 })
 
 map("n", "<c-d><c-[>", ":lua vim.diagnostic.goto_prev()<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "Diagnostics: Previous diagnostic",
 })
 
@@ -250,17 +250,17 @@ map("n", "<bs>", "ci", {}, {
 })
 
 map("n", "gd", ":Telescope lsp_definitions<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "Go to symbol definition",
 })
 
 map("n", "gr", ":Telescope lsp_references<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "List symbol references",
 })
 
 map("n", "do", ":lua vim.lsp.buf.code_action()<cr>", {}, {
-	category = "LSP",
+	category = "IDE",
 	desc = "List code actions",
 })
 
