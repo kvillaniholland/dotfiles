@@ -21,9 +21,6 @@ if [[ -r "$HOME/secretvars.sh" ]]; then
     export PATH=~/.local/bin:$PATH
 fi
 
-# Turn on TheFuck
-eval $(thefuck --alias)
-
 # Set up NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
