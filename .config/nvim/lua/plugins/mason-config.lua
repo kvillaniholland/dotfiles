@@ -25,18 +25,6 @@ require("mason-lspconfig").setup_handlers({
 			on_attach = on_attach,
 		})
 	end,
-	-- ["tsserver"] = function()
-	-- 	require("lspconfig")["tsserver"].setup({
-	-- 		root_dir = nvim_lsp.util.find_package_json_ancestor,
-	-- 		capabilities = capabilities,
-	-- 		on_attach = on_attach,
-	-- 		init_options = {
-	-- 			preferences = {
-	-- 				importModuleSpecifierPreference = "relative",
-	-- 			},
-	-- 		},
-	-- 	})
-	-- end,
 	["vtsls"] = function()
 		require("lspconfig")["vtsls"].setup({
 			root_dir = nvim_lsp.util.find_package_json_ancestor,

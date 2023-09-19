@@ -1,4 +1,4 @@
-local command_center = require("command_center")
+local command_center = require("commander")
 local wk = require("which-key")
 local vim = vim
 
@@ -10,8 +10,7 @@ local function map(mode, key, command, opts, hint)
 	vim.keymap.set(mode, key, command, options)
 	if hint ~= nil then
 		command_center.add(
-			{ { category = hint.category, desc = hint.desc, cmd = command, keys = { mode, key } } },
-			command_center.mode.ADD
+			{ { category = hint.category, desc = hint.desc, cmd = command, keys = { mode, key } } }
 		)
 		wk.register({
 			[key] = { command, hint.desc },

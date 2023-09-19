@@ -16,9 +16,9 @@ vim.cmd([[hi! link VertSplit SignColumn]])
 
 -- Nicer diagnostic signs
 local signs = {
-	Error = " ",
+	Error = " ",
 	Warn = " ",
-	Hint = " ",
+	Hint = " ",
 	Info = " ",
 }
 for type, icon in pairs(signs) do
