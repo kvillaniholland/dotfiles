@@ -1,14 +1,25 @@
 require("mason").setup()
 
 require("mason-null-ls").setup({
-	ensure_installed = {},
+	ensure_installed = {
+        "prettier",
+        "eslint_d",
+        "blue"
+    },
 	automatic_installation = false,
 	handlers = {},
 })
 
 require("null-ls").setup()
 
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls",
+        "vtsls",
+        "pylsp",
+        "pyright"
+    }
+})
 local nvim_lsp = require("lspconfig")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

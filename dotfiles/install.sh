@@ -30,7 +30,7 @@ fi
 
 brew tap homebrew/cask-fonts
 brew tap FelixKratz/formulae
-brew install font-fira-code-nerd-font nvim yarn nvm sketchybar jq fzf fff exa btop
+brew install font-fira-code-nerd-font nvim yarn npm fx ripgrep nvm sketchybar jq fzf fff exa btop
 
 # Brew can't seem to tell if App bundles are installed already, so we check by hand
 if ! [ -d "/Applications/kitty.app" ]; then
