@@ -4,7 +4,9 @@ require("mason-null-ls").setup({
 	ensure_installed = {
         "prettier",
         "eslint_d",
-        "blue"
+        "blue",
+        "codespell",
+        "jsonlint"
     },
 	automatic_installation = false,
 	handlers = {},

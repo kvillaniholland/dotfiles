@@ -4,13 +4,13 @@
 # Setup Helper Functions
 backup_dir() {
     if [ -d "$1" ]; then
-        cp -r "$1" BACKUP_DIR
+        cp -r "$1" "$2"
     fi
 }
 
 backup_file() {
     if [ -f "$1" ]; then
-        cp -r "$1" BACKUP_DIR
+        cp -r "$1" "$2"
     fi
 }
 
@@ -30,7 +30,7 @@ fi
 
 brew tap homebrew/cask-fonts
 brew tap FelixKratz/formulae
-brew install font-fira-code-nerd-font nvim yarn npm fx ripgrep nvm sketchybar jq fzf fff exa btop
+brew install font-fira-code-nerd-font nvim yarn npm fx ripgrep nvm sketchybar jq fzf fff gnu-sed tree-sitter exa btop
 
 # Brew can't seem to tell if App bundles are installed already, so we check by hand
 if ! [ -d "/Applications/kitty.app" ]; then
@@ -49,15 +49,13 @@ UUID=$(uuidgen)
 BACKUP_DIR="$HOME/.config-backup/$UUID"
 mkdir -p BACKUP_DIR
 
-backup_dir "$HOME/.config/kitty"
-backup_dir "$HOME/.config/nvim"
-backup_dir "$HOME/.config/sketchybar"
-backup_dir "$HOME/.config/yabai"
-backup_dir "$HOME/.config/skhd"
-backup_dir "$HOME/.hammerspoon"
-backup_file "$HOME/.vimrc"
-backup_file "$HOME/.zshrc"
-backup_file "$HOME/.p10k.zsh"
+backup_dir "$HOME/.config/kitty" "$BACKUP_DIR"
+backup_dir "$HOME/.config/nvim" "$BACKUP_DIR"
+backup_dir "$HOME/.config/sketchybar" "$BACKUP_DIR"
+backup_dir "$HOME/.config/karabiner" "$BACKUP_DIR"
+backup_file "$HOME/.vimrc" "$BACKUP_DIR"
+backup_file "$HOME/.zshrc" "$BACKUP_DIR"
+backup_file "$HOME/.p10k.zsh" "$BACKUP_DIR"
 ##################################
 
 
@@ -70,6 +68,12 @@ if ! [ -d "$HOME/.dotfiles" ]; then
 fi
 ##################################
 
+##################################
+# Set up some git configs
+git config --global push.autoSetupRemote true
+git config --global alias.paid push
+git config --global alias.mad "reset --hard HEAD"
+##################################
 
 ##################################
 # Start everything up!
