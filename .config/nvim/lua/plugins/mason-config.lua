@@ -2,12 +2,18 @@ require("mason").setup()
 
 require("mason-null-ls").setup({
 	ensure_installed = {
-        "prettier",
-        "eslint_d",
-        "blue",
-        "codespell",
-        "jsonlint"
-    },
+		"prettierd",
+		"eslint_d",
+		"blue",
+		"codespell",
+		"jsonlint",
+		"beautysh",
+		"luacheck",
+		"markdownlint",
+		"stylua",
+		"write-good",
+		"mypy",
+	},
 	automatic_installation = false,
 	handlers = {},
 })
@@ -15,12 +21,13 @@ require("mason-null-ls").setup({
 require("null-ls").setup()
 
 require("mason-lspconfig").setup({
-    ensure_installed = {
-        "lua_ls",
-        "vtsls",
-        "pylsp",
-        "pyright"
-    }
+	ensure_installed = {
+		"lua_ls",
+		"vtsls",
+		"pylsp",
+		"pyright",
+		"jsonls",
+	},
 })
 local nvim_lsp = require("lspconfig")
 

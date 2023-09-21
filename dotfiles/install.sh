@@ -72,6 +72,7 @@ fi
 # Set up some git configs
 git config --global push.autoSetupRemote true
 git config --global alias.paid push
+git config --global alias.co checkout
 git config --global alias.mad "reset --hard HEAD"
 ##################################
 
