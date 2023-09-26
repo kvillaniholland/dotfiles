@@ -9,9 +9,7 @@ local function map(mode, key, command, opts, hint)
 	end
 	vim.keymap.set(mode, key, command, options)
 	if hint ~= nil then
-		command_center.add(
-			{ { category = hint.category, desc = hint.desc, cmd = command, keys = { mode, key } } }
-		)
+		command_center.add({ { category = hint.category, desc = hint.desc, cmd = command, keys = { mode, key } } })
 		wk.register({
 			[key] = { command, hint.desc },
 		}, { mode = mode })
@@ -32,27 +30,27 @@ map("v", "<down>", "10j")
 map("v", "<up>", "10k")
 
 -->> Space + ASDF <<--
-map("n", "<space>a", ":Telescope neoclip<cr>", {}, {
+map("n", "<space>a", ":Telescope neoclip theme=dropdown<cr>", {}, {
 	category = "Telescope",
 	desc = "Clipboard history",
 })
 
-map("n", "<space>s", ":Telescope live_grep<cr>", {}, {
+map("n", "<space>s", ":Telescope live_grep theme=dropdown<cr>", {}, {
 	category = "Telescope",
 	desc = "Search in project",
 })
 
-map("n", "<space>d", ":AerialToggle<cr>", {}, {
+map("n", "<space>d", ":Telescope lsp_document_symbols theme=dropdown<cr>", {}, {
 	category = "Editor",
 	desc = "Toggle symbols outline",
 })
 
-map("n", "<space>f", ":Telescope find_files<cr>", {}, {
+map("n", "<space>f", ":Telescope find_files theme=dropdown<cr>", {}, {
 	category = "Telescope",
 	desc = "Find files",
 })
 
-map("n", "<space>g", ":Telescope buffers<cr>", {}, {
+map("n", "<space>g", ":Telescope buffers theme=dropdown<cr>", {}, {
 	category = "Telescope",
 	desc = "List open buffers",
 })
@@ -108,7 +106,7 @@ map("n", "<space>t", ":lua require('utils/quickmarks').toggleMark()<cr>", {}, {
 	desc = "Add quickmark",
 })
 
-map("n", "<space>y", ":Telescope quickfix<cr>", {}, {
+map("n", "<space>y", ":Telescope quickfix theme=dropdown<cr>", {}, {
 	category = "Marks",
 	desc = "Show quickmarks popup",
 })
@@ -133,7 +131,7 @@ map("n", "<space>p", ":lua require('utils/helpers').toggleQf()<cr>", {}, {
 	desc = "Toggle quickfix list",
 })
 
-map("n", "<space><space>", ":Telescope command_center<cr>", {}, {
+map("n", "<space><space>", ":Telescope commander theme=dropdown<cr>", {}, {
 	category = "Application",
 	desc = "Open command center",
 })
@@ -248,12 +246,12 @@ map("n", "<bs>", "ci", {}, {
 	desc = "Change inner [blank]",
 })
 
-map("n", "gd", ":Telescope lsp_definitions<cr>", {}, {
+map("n", "gd", ":Telescope lsp_definitions theme=dropdown<cr>", {}, {
 	category = "IDE",
 	desc = "Go to symbol definition",
 })
 
-map("n", "gr", ":Telescope lsp_references<cr>", {}, {
+map("n", "gr", ":Telescope lsp_references theme=dropdown<cr>", {}, {
 	category = "IDE",
 	desc = "List symbol references",
 })
@@ -277,7 +275,7 @@ map("n", "<cr>", ":Pounce<cr>", {}, {
 map("v", "y", "ygv<esc>", {})
 
 -- Open Command Center in visual mode (Alt-P)
-map("v", "π", ":<c-u>Telescope command_center<cr>", {}, {
+map("v", "π", ":<c-u>Telescope command_center theme=dropdown<cr>", {}, {
 	category = "Application",
 	desc = "Open command center while in visual mode",
 })

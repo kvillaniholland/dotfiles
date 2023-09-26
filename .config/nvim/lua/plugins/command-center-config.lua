@@ -1,5 +1,11 @@
 local command_center = require("commander")
-
+require("commander").setup({
+	integration = {
+		telescope = {
+			enable = true,
+		},
+	},
+})
 command_center.add({
 	{
 		category = "Editor",
@@ -198,4 +204,4 @@ command_center.add({
 		desc = "Pick source action",
 		cmd = ":VtsExec source_actions<cr>",
 	},
-}, command_center.mode.ADD)
+})
