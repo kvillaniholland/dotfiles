@@ -50,9 +50,9 @@ map("n", "<space>f", ":Telescope find_files theme=dropdown<cr>", {}, {
 	desc = "Find files",
 })
 
-map("n", "<space>g", ":Telescope buffers theme=dropdown<cr>", {}, {
-	category = "Telescope",
-	desc = "List open buffers",
+map("n", "<space>g", ":AerialToggle<cr>", {}, {
+	category = "IDE",
+	desc = "Toggle symbols sidebar",
 })
 
 map("n", "<space>h", '<cmd>lua require("spectre").open()<cr>', {}, {
