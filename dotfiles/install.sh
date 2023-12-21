@@ -30,12 +30,14 @@ fi
 
 brew tap homebrew/cask-fonts
 brew tap FelixKratz/formulae
-brew install font-fira-code-nerd-font nvim yarn npm fx ripgrep nvm sketchybar jq fzf fff gnu-sed tree-sitter exa btop
+brew install font-fira-code-nerd-font nvim node python3 yarn npm fx ripgrep sketchybar jq fzf fff gnu-sed tree-sitter exa btop
 
 # Brew can't seem to tell if App bundles are installed already, so we check by hand
 if ! [ -d "/Applications/kitty.app" ]; then
     brew install kitty
 fi
+brew install --cask devtoys
+
 
 git_install ".powerlevel10k" "romkatv/powerlevel10k.git"
 git_install ".base16-kitty" "kdrag0n/base16-kitty.git"

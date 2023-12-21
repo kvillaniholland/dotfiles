@@ -96,6 +96,8 @@ packup({
 	{ name = "diffview", repo = "sindrets/diffview.nvim" },
 	-- Extra Typescript capabilities
 	{ name = "nvim-vtsls", repo = "yioneko/nvim-vtsls" },
+	-- Debugger
+	{ name = "nvim-dap", repo = "mfussenegger/nvim-dap" },
 
 	-- ## Deactivated ## --
 	-- Predefined snippets

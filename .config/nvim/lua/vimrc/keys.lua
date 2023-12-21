@@ -280,6 +280,47 @@ map("v", "π", ":<c-u>Telescope command_center theme=dropdown<cr>", {}, {
 	desc = "Open command center while in visual mode",
 })
 
+-->> Debugger <<--
+map("n", "<space>1", ":lua require('dap').toggle_breakpoint()<cr>", {}, {
+	category = "Debugger",
+	desc = "Toggle breakpoint",
+})
+map("n", "<space>2", ":lua require('dap').continue()<cr>", {}, {
+	category = "Debugger",
+	desc = "Continue",
+})
+map("n", "<space>3", ":lua require('dap').repl.toggle()<cr>", {}, {
+	category = "Debugger",
+	desc = "Toggle REPL",
+})
+map("n", "<space>4", ":lua require('dap').step_over()<cr>", {}, {
+	category = "Debugger",
+	desc = "Step over",
+})
+map("n", "<space>5", ":lua require('dap').step_into()<cr>", {}, {
+	category = "Debugger",
+	desc = "Step into",
+})
+map("n", "<space>6", ":lua require('dap').step_out()<cr>", {}, {
+	category = "Debugger",
+	desc = "Step out",
+})
+map("n", "<space>7", ":lua require('dap').step_down()<cr>", {}, {
+	category = "Debugger",
+	desc = "Step down",
+})
+map("n", "<space>8", ":lua require('dap').step_up()<cr>", {}, {
+	category = "Debugger",
+	desc = "Step up",
+})
+map("n", "<space>9", ":lua require('dap').list_breakpoints()<cr>", {}, {
+	category = "Debugger",
+	desc = "List breakpoints",
+})
+map("n", "<space>0", ":lua require('dap').clear_breakpoints()<cr>", {}, {
+	category = "Debugger",
+	desc = "Clear breakpoints",
+})
 -->> Setup tab functionality in autocomplete <<--
 map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 map("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
