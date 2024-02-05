@@ -321,7 +321,7 @@
                         "product_id": 20602,
                         "vendor_id": 12815
                     },
-                    "ignore": true,
+                    "ignore": false,
                     "manipulate_caps_lock_led": true,
                     "mouse_flip_horizontal_wheel": false,
                     "mouse_flip_vertical_wheel": false,
@@ -374,6 +374,16 @@
                         },
                         {
                             "from": {
+                                "key_code": "print_screen"
+                            },
+                            "to": [
+                                {
+                                    "apple_vendor_keyboard_key_code": "language"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
                                 "key_code": "right_command"
                             },
                             "to": [
@@ -389,16 +399,6 @@
                             "to": [
                                 {
                                     "key_code": "right_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "print_screen"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_keyboard_key_code": "language"
                                 }
                             ]
                         }
