@@ -52,3 +52,5 @@ vim.o.smartindent = true
 vim.g.netrw_banner = false
 -- Don't hide files in Netrw
 vim.g.netrw_hide = 0
+-- Save localoptions in session file - this fixes the issue where syntax highlighting is off when restoring a session
+vim.o.sessionoptions = vim.o.sessionoptions .. ",localoptions"

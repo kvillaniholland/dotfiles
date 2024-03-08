@@ -1,49 +1,6 @@
 local vim = vim -- Just to get rid of the annoying warnings
 local M = {}
 
-function M.ensure_packer()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
-end
-
-function M.config(packageName)
-	if pcall(require, "plugins/" .. packageName .. "-config") then
-		return
-	else
-		pcall(function()
-			require(packageName).setup()
-		end)
-	end
-end
-
-function M.install(use, packages)
-	for _, package in ipairs(packages) do
-		use({
-			package.repo,
-			config = M.config(package.name),
-			run = package.run,
-			as = package.as,
-		})
-	end
-end
-
-function M.packup(packages)
-	local packer_bootstrap = M.ensure_packer()
-	require("packer").startup(function(use)
-		M.install(use, packages)
-
-		if packer_bootstrap then
-			require("packer").sync()
-		end
-	end)
-end
-
 function M.autocommand(trigger, opts)
 	vim.api.nvim_create_autocmd(trigger, opts)
 end

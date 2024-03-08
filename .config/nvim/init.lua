@@ -18,6 +18,3 @@ require("vimrc/commands")
 
 -- Set up autocommands
 require("vimrc/autocommands")
-
--- TODOs:
--- Move Nvim-Cmp keymaps to keys.lua
