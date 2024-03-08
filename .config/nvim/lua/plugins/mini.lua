@@ -3,12 +3,12 @@ return {
 	config = function()
 		require("mini.surround").setup()
 		require("mini.trailspace").setup()
-		require("mini.ai").setup()
 		require("mini.bufremove").setup()
 		require("mini.fuzzy").setup()
 		require("mini.comment").setup()
 		require("mini.sessions").setup()
 		require("mini.cursorword").setup()
+		require("mini.completion").setup()
 
 		-- Change highlight for currently selected word
 		vim.cmd([[hi! link MiniCursorWord Search]])

@@ -25,11 +25,15 @@ autocommand("FocusLost", { command = "lua pcall(vim.cmd('wall'))" })
 autocommand("VimLeave", { command = "lua MiniSessions.write(nil, {force = true})" })
 -- Close Quickfix window on exit (it's annoying when reopening)
 autocommand("VimLeavePre", { command = ":cclose" })
--- Load session if one exists when starting Neovim
-autocommand("VimEnter", { command = "lua require('utils/helpers').loadSession()" })
+-- Show session list on start
+autocommand("VimEnter", { command = ":Ls" })
 -- Check if we need to reload the file when it changed
 autocommand({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
 -- Resize splits if window got resized
 autocommand({ "VimResized" }, { callback = resizeSplits })
 -- Go to last loc when opening a buffer
 autocommand("BufReadPost", { callback = goToLastLoc })
+
+-->> Disabled <<--
+-- Load session if one exists when starting Neovim
+-- autocommand("VimEnter", { command = "lua require('utils/helpers').loadSession()" })

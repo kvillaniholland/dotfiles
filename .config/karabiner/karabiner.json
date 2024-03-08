@@ -150,74 +150,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "2x Left Shift -> Caps Lock",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "left_shift pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "caps_lock"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "left_shift pressed",
-                                            "value": 1
-                                        }
-                                    },
-                                    {
-                                        "key_code": "left_shift"
-                                    }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "set_variable": {
-                                                "name": "left_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "left_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
@@ -321,7 +253,7 @@
                         "product_id": 20602,
                         "vendor_id": 12815
                     },
-                    "ignore": false,
+                    "ignore": true,
                     "manipulate_caps_lock_led": true,
                     "mouse_flip_horizontal_wheel": false,
                     "mouse_flip_vertical_wheel": false,

@@ -1,5 +1,5 @@
-local command_center = require("commander")
-local wk = require("which-key")
+-- local command_center = require("commander")
+-- local wk = require("which-key")
 local vim = vim
 
 local function map(mode, key, command, opts, hint)
@@ -9,10 +9,10 @@ local function map(mode, key, command, opts, hint)
 	end
 	vim.keymap.set(mode, key, command, options)
 	if hint ~= nil then
-		command_center.add({ { category = hint.category, desc = hint.desc, cmd = command, keys = { mode, key } } })
-		wk.register({
-			[key] = { command, hint.desc },
-		}, { mode = mode })
+		-- command_center.add({ { category = hint.category, desc = hint.desc, cmd = command, keys = { mode, key } } })
+		-- wk.register({
+		--		[key] = { command, hint.desc },
+		-- }, { mode = mode })
 	end
 end
 
@@ -20,11 +20,13 @@ end
 -- J/K navigation handles broken lines
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
 -- Shift + J/K to scroll fast
-map("n", "<down>", ":lua require('neoscroll').scroll(vim.wo.scroll, true, 150)<cr>")
-map("n", "<up>", ":lua require('neoscroll').scroll(-vim.wo.scroll, true, 150)<cr>")
-map("n", "<s-j>", ":lua require('neoscroll').scroll(vim.wo.scroll, true, 150)<cr>")
-map("n", "<s-k>", ":lua require('neoscroll').scroll(-vim.wo.scroll, true, 150)<cr>")
+map("n", "<down>", "10j")
+map("n", "<up>", "10k")
+map("n", "<s-j>", "10j")
+map("n", "<s-k>", "10k")
+
 -- Shift + J/K for visual mode too
 map("v", "<down>", "10j")
 map("v", "<up>", "10k")
@@ -48,16 +50,6 @@ map("n", "<space>d", ":Telescope lsp_document_symbols theme=dropdown<cr>", {}, {
 map("n", "<space>f", ":Telescope find_files theme=dropdown<cr>", {}, {
 	category = "Telescope",
 	desc = "Find files",
-})
-
-map("n", "<space>g", ":AerialToggle<cr>", {}, {
-	category = "IDE",
-	desc = "Toggle symbols sidebar",
-})
-
-map("n", "<space>h", '<cmd>lua require("spectre").open()<cr>', {}, {
-	category = "Editor",
-	desc = "Find & replace in project",
 })
 
 map("n", "<space>j", ":lua require('utils/netrw-toggle').ToggleExplore()<cr>", {}, {
@@ -131,68 +123,11 @@ map("n", "<space>p", ":lua require('utils/helpers').toggleQf()<cr>", {}, {
 	desc = "Toggle quickfix list",
 })
 
-map("n", "<space><space>", ":Telescope commander theme=dropdown<cr>", {}, {
-	category = "Application",
-	desc = "Open command center",
-})
-
 -->> Ctrl Maps <<--
--- Git Conflicts
-map("n", "<c-g><c-o>", ":GitConflictChooseOurs<cr>", {}, {
-	category = "Git",
-	desc = "Conflicts: Choose ours",
-})
-
-map("n", "<c-g><c-t>", ":GitConflictChooseTheirs<cr>", {}, {
-	category = "Git",
-	desc = "Conflicts: Choose theirs",
-})
-
-map("n", "<c-g><c-b>", ":GitConflictChooseBoth<cr>", {}, {
-	category = "Git",
-	desc = "Conflicts: Choose both",
-})
-
-map("n", "<c-g><c-]>", ":GitConflictNextConflict<cr>", {}, {
-	category = "Git",
-	desc = "Conflicts: Next conflict",
-})
-
-map("n", "<c-g><c-[>", ":GitConflictPrevConflict<cr>", {}, {
-	category = "Git",
-	desc = "Conflicts: Previous conflict",
-})
-
--- LSP Diagnostics
-map("n", "<c-d><c-]>", ":lua vim.diagnostic.goto_next()<cr>", {}, {
-	category = "IDE",
-	desc = "Diagnostics: Next diagnostic",
-})
-
-map("n", "<c-d><c-[>", ":lua vim.diagnostic.goto_prev()<cr>", {}, {
-	category = "IDE",
-	desc = "Diagnostics: Previous diagnostic",
-})
-
 -- Misc ctrl maps
-map("n", "<c-n>", ":lua require('tsht').move()<cr>", {}, {
-	category = "Syntax Tree",
-	desc = "Jump to node",
-})
-
-map("n", "<c-m>", ":lua require('tsht').nodes()<cr>", {}, {
-	category = "Syntax Tree",
-	desc = "Select node with hints",
-})
-
 map("n", "<c-p>", "<c-i>", {}, {
 	category = "Jump",
 	desc = "Jump forward",
-})
-
-map("n", "<c-b>", ":HopChar2<cr>", {}, {
-	category = "Jump",
-	desc = "Jump to two character pattern",
 })
 
 -->> Window navigation <<--
@@ -251,9 +186,19 @@ map("n", "gd", ":Telescope lsp_definitions theme=dropdown<cr>", {}, {
 	desc = "Go to symbol definition",
 })
 
-map("n", "gr", ":Telescope lsp_references theme=dropdown<cr>", {}, {
+map("n", "gpd", ":lua require('goto-preview').goto_preview_definition()<cr>", {}, {
+	category = "IDE",
+	desc = "Go to symbol definition",
+})
+
+map("n", "gr", ":lua require('goto-preview').goto_preview_references()<cr>", {}, {
 	category = "IDE",
 	desc = "List symbol references",
+})
+
+map("n", "gf", ":lua require('goto-preview').goto_preview_type_definition()<cr>", {}, {
+	category = "IDE",
+	desc = "Goto type definition",
 })
 
 map("n", "do", ":lua vim.lsp.buf.code_action()<cr>", {}, {
@@ -274,53 +219,135 @@ map("n", "<cr>", ":Pounce<cr>", {}, {
 -- Yank in visual mode doesn't jump the cursor to the beginning
 map("v", "y", "ygv<esc>", {})
 
--- Open Command Center in visual mode (Alt-P)
-map("v", "π", ":<c-u>Telescope command_center theme=dropdown<cr>", {}, {
-	category = "Application",
-	desc = "Open command center while in visual mode",
-})
+-->> Override w, e, b to use nvim-spider <<--
+vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
 
--->> Debugger <<--
-map("n", "<space>1", ":lua require('dap').toggle_breakpoint()<cr>", {}, {
-	category = "Debugger",
-	desc = "Toggle breakpoint",
-})
-map("n", "<space>2", ":lua require('dap').continue()<cr>", {}, {
-	category = "Debugger",
-	desc = "Continue",
-})
-map("n", "<space>3", ":lua require('dap').repl.toggle()<cr>", {}, {
-	category = "Debugger",
-	desc = "Toggle REPL",
-})
-map("n", "<space>4", ":lua require('dap').step_over()<cr>", {}, {
-	category = "Debugger",
-	desc = "Step over",
-})
-map("n", "<space>5", ":lua require('dap').step_into()<cr>", {}, {
-	category = "Debugger",
-	desc = "Step into",
-})
-map("n", "<space>6", ":lua require('dap').step_out()<cr>", {}, {
-	category = "Debugger",
-	desc = "Step out",
-})
-map("n", "<space>7", ":lua require('dap').step_down()<cr>", {}, {
-	category = "Debugger",
-	desc = "Step down",
-})
-map("n", "<space>8", ":lua require('dap').step_up()<cr>", {}, {
-	category = "Debugger",
-	desc = "Step up",
-})
-map("n", "<space>9", ":lua require('dap').list_breakpoints()<cr>", {}, {
-	category = "Debugger",
-	desc = "List breakpoints",
-})
-map("n", "<space>0", ":lua require('dap').clear_breakpoints()<cr>", {}, {
-	category = "Debugger",
-	desc = "Clear breakpoints",
-})
 -->> Setup tab functionality in autocomplete <<--
 map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 map("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+
+------------------------------------------------------------------------------------------------------------
+
+-- -->> Disabled <<--
+-- LSP Diagnostics
+-- map("n", "<c-d><c-]>", ":lua vim.diagnostic.goto_next()<cr>", {}, {
+-- 	category = "IDE",
+-- 	desc = "Diagnostics: Next diagnostic",
+-- })
+--
+-- map("n", "<c-d><c-[>", ":lua vim.diagnostic.goto_prev()<cr>", {}, {
+-- 	category = "IDE",
+-- 	desc = "Diagnostics: Previous diagnostic",
+-- })
+--
+-- -- Open Command Center in visual mode (Alt-P)
+-- map("v", "π", ":<c-u>Telescope command_center theme=dropdown<cr>", {}, {
+-- 	category = "Application",
+-- 	desc = "Open command center while in visual mode",
+-- })
+--
+-- map("n", "<space><space>", ":Telescope commander theme=dropdown<cr>", {}, {
+-- 	category = "Application",
+-- 	desc = "Open command center",
+-- })
+--
+-- map("n", "<space>h", '<cmd>lua require("spectre").open()<cr>', {}, {
+-- 	category = "Editor",
+-- 	desc = "Find & replace in project",
+-- })
+--
+-- map("n", "<space>g", ":AerialToggle<cr>", {}, {
+-- 	category = "IDE",
+-- 	desc = "Toggle symbols sidebar",
+-- })
+-- -- map("n", "<down>", ":lua require('neoscroll').scroll(vim.wo.scroll, true, 150)<cr>")
+-- -- map("n", "<up>", ":lua require('neoscroll').scroll(-vim.wo.scroll, true, 150)<cr>")
+-- -- map("n", "<s-j>", ":lua require('neoscroll').scroll(vim.wo.scroll, true, 150)<cr>")
+-- -- map("n", "<s-k>", ":lua require('neoscroll').scroll(-vim.wo.scroll, true, 150)<cr>")
+-- -->> Debugger <<--
+-- map("n", "<space>1", ":lua require('dap').toggle_breakpoint()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Toggle breakpoint",
+-- })
+-- map("n", "<space>2", ":lua require('dap').continue()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Continue",
+-- })
+-- map("n", "<space>3", ":lua require('dap').repl.toggle()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Toggle REPL",
+-- })
+-- map("n", "<space>4", ":lua require('dap').step_over()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Step over",
+-- })
+-- map("n", "<space>5", ":lua require('dap').step_into()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Step into",
+-- })
+-- map("n", "<space>6", ":lua require('dap').step_out()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Step out",
+-- })
+-- map("n", "<space>7", ":lua require('dap').step_down()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Step down",
+-- })
+-- map("n", "<space>8", ":lua require('dap').step_up()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Step up",
+-- })
+-- map("n", "<space>9", ":lua require('dap').list_breakpoints()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "List breakpoints",
+-- })
+-- map("n", "<space>0", ":lua require('dap').clear_breakpoints()<cr>", {}, {
+-- 	category = "Debugger",
+-- 	desc = "Clear breakpoints",
+-- })
+-- map("n", "<c-b>", ":HopChar2<cr>", {}, {
+-- 	category = "Jump",
+-- 	desc = "Jump to two character pattern",
+-- })
+--
+-- map("n", "<c-n>", ":lua require('tsht').move()<cr>", {}, {
+-- 	category = "Syntax Tree",
+-- 	desc = "Jump to node",
+-- })
+--
+-- map("n", "<c-m>", ":lua require('tsht').nodes()<cr>", {}, {
+-- 	category = "Syntax Tree",
+-- 	desc = "Select node with hints",
+-- })
+-- -- Git Conflicts
+-- map("n", "<c-g><c-o>", ":GitConflictChooseOurs<cr>", {}, {
+-- 	category = "Git",
+-- 	desc = "Conflicts: Choose ours",
+-- })
+--
+-- map("n", "<c-g><c-t>", ":GitConflictChooseTheirs<cr>", {}, {
+-- 	category = "Git",
+-- 	desc = "Conflicts: Choose theirs",
+-- })
+--
+-- map("n", "<c-g><c-b>", ":GitConflictChooseBoth<cr>", {}, {
+-- 	category = "Git",
+-- 	desc = "Conflicts: Choose both",
+-- })
+--
+-- map("n", "<c-g><c-]>", ":GitConflictNextConflict<cr>", {}, {
+-- 	category = "Git",
+-- 	desc = "Conflicts: Next conflict",
+-- })
+--
+-- map("n", "<c-g><c-[>", ":GitConflictPrevConflict<cr>", {}, {
+-- 	category = "Git",
+-- 	desc = "Conflicts: Previous conflict",
+-- })
+--
+-- map("n", "gd", ":Telescope lsp_definitions theme=dropdown<cr>", {}, {
+-- 	category = "IDE",
+-- 	desc = "Go to symbol definition",
+-- })
