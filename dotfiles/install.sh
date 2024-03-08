@@ -47,17 +47,17 @@ git_install ".fzf-tab" "Aloxaf/fzf-tab"
 
 ##################################
 # Make backups of everything before pulling all the files down
-UUID=$(uuidgen)
-BACKUP_DIR="$HOME/.config-backup/$UUID"
-mkdir -p BACKUP_DIR
-
-backup_dir "$HOME/.config/kitty" "$BACKUP_DIR"
-backup_dir "$HOME/.config/nvim" "$BACKUP_DIR"
-backup_dir "$HOME/.config/sketchybar" "$BACKUP_DIR"
-backup_dir "$HOME/.config/karabiner" "$BACKUP_DIR"
-backup_file "$HOME/.vimrc" "$BACKUP_DIR"
-backup_file "$HOME/.zshrc" "$BACKUP_DIR"
-backup_file "$HOME/.p10k.zsh" "$BACKUP_DIR"
+# UUID=$(uuidgen)
+# BACKUP_DIR="$HOME/.config-backup/$UUID"
+# mkdir -p BACKUP_DIR
+#
+# backup_dir "$HOME/.config/kitty" "$BACKUP_DIR"
+# backup_dir "$HOME/.config/nvim" "$BACKUP_DIR"
+# backup_dir "$HOME/.config/sketchybar" "$BACKUP_DIR"
+# backup_dir "$HOME/.config/karabiner" "$BACKUP_DIR"
+# backup_file "$HOME/.vimrc" "$BACKUP_DIR"
+# backup_file "$HOME/.zshrc" "$BACKUP_DIR"
+# backup_file "$HOME/.p10k.zsh" "$BACKUP_DIR"
 ##################################
 
 

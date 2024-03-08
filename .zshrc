@@ -35,10 +35,10 @@ fi
 # Set up NVM
 # This needs to be updated / streamlined - it's currently copy/pasted from the brew install directory. For example, line 33 will break if nvm gets updated
 # $NVM_DIR should be "$HOME/.nvm" by default to avoid user-installed nodes destroyed every update
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+#
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 #\. /opt/homebrew/Cellar/nvm/0.39.5/libexec/nvm.sh
 
@@ -81,6 +81,7 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 ##################################
 # https://github.com/jarun/nnn
 alias dotinstall='config pull && ~/dotfiles/install.sh'
+alias dotupdate='~/dotfiles/update.sh'
 alias ls="exa"
 export PATH="/usr/local/sbin:$PATH"
 ##################################
