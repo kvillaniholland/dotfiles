@@ -85,3 +85,11 @@ alias dotupdate='~/dotfiles/update.sh'
 alias ls="eza"
 export PATH="/usr/local/sbin:$PATH"
 ##################################
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/villanih/.bun/_bun" ] && source "/Users/villanih/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

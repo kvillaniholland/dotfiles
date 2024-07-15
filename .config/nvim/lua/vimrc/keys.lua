@@ -191,12 +191,22 @@ map("n", "gpd", ":lua require('goto-preview').goto_preview_definition()<cr>", {}
 	desc = "Go to symbol definition",
 })
 
-map("n", "gr", ":lua require('goto-preview').goto_preview_references()<cr>", {}, {
+map("n", "gr", ":Telescope lsp_references theme=dropdown<cr>", {}, {
 	category = "IDE",
 	desc = "List symbol references",
 })
 
-map("n", "gf", ":lua require('goto-preview').goto_preview_type_definition()<cr>", {}, {
+map("n", "gpr", ":lua require('goto-preview').goto_preview_references()<cr>", {}, {
+	category = "IDE",
+	desc = "List symbol references",
+})
+
+map("n", "gf", ":Telescope lsp_type_definitions theme=dropdown<cr>", {}, {
+	category = "IDE",
+	desc = "Goto type definition",
+})
+
+map("n", "gpf", ":lua require('goto-preview').goto_preview_type_definition()<cr>", {}, {
 	category = "IDE",
 	desc = "Goto type definition",
 })
