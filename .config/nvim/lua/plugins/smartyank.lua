@@ -1,1 +1,0 @@
-return { "ibhagwan/smartyank.nvim" }
